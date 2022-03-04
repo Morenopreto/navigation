@@ -2,13 +2,13 @@ import { View, Text, StyleSheet } from "react-native";
 import Button from "../components/Button";
 import style from "../styles/style";
 
-export default function PantallaUno({ navigation }) {
+export default function PantallaUno({ navigation,numero }) {
   const handleOnPress = () => {
     navigation.navigate("Detalle de Uno");
   };
   return (
     <View style={styles.container}>
-      <Text style={{ fontSize: 25 }}>Esta es la pantalla uno </Text>
+      <Text style={{ fontSize: 25 }}>Esta es la pantalla {numero} </Text>
       <Button
         style={style.outlined}
         title="Ir a detalle"
