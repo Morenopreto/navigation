@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import PantallaUno from "../views/PantallaUno";
 import PantallaDos from "../views/PantallaDos";
-import PantallaInicio from "../views/PantallaInicio";
+import PantallaInicio from "../views/ActividadView";
 import DetalleDos from "../views/DetalleDos";
 import DetalleUno from "../views/DetalleUno";
 
