@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 import Button from "../components/Button";
 import style from "../styles/style";
 import { useSelector } from "react-redux";
@@ -8,10 +8,20 @@ export default function PantallaUno() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.imagen}>
-        <Text>Aqui va Imagen</Text>
+      <View style={styles.imagenContainer}>
+        <Image
+          style={styles.imagen}
+          source={{
+            uri: selectedActivity?.imagenEvento,
+          }}
+        />
       </View>
-      <Text style={styles.perfilImg}>Perfil</Text>
+      <Image
+        style={styles.perfilImg}
+        source={{
+          uri: selectedActivity?.creadorEvento.fotoPerfil,
+        }}
+      />
       {/* IMAGEN DE PERFIL */}
       <View style={styles.firstContainer}>
         <Text style={styles.clasificacion}>
@@ -19,14 +29,19 @@ export default function PantallaUno() {
         </Text>
         <Text style={styles.nombreEvento}>{selectedActivity.nombreEvento}</Text>
       </View>
-      <View>
-        <Text>{selectedActivity.lugarEvento}</Text>
-        <Text>{selectedActivity.diaEvento}</Text>
+      <View style={styles.lugarFechaContainer}>
+        <Text style={styles.lugarFecha}>{selectedActivity.lugarEvento}</Text>
+        <Text style={styles.lugarFecha}>
+          {selectedActivity?.diaEvento}, {selectedActivity?.horaEvento}
+        </Text>
       </View>
-      <Text>{selectedActivity.creadorEvento}</Text>
-      <Text style={{ fontSize: 25 }}>
-        ID EVENTO: {selectedActivity.id}{" "}
-      </Text>
+      <View>
+      <Text style={styles.lugarFecha}>
+          {selectedActivity?.observaciones}
+        </Text>
+      </View>
+      <Text>{selectedActivity.creadorEvento.nombreCreador}</Text>
+      <Text style={{ fontSize: 25 }}>ID EVENTO: {selectedActivity.id} </Text>
     </View>
   );
 }
@@ -39,11 +54,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     margin: 0,
   },
+  imagenContainer: {
+    width: "100%",
+    height: "20%",
+  },
   imagen: {
     margin: 0,
     width: "100%",
-    height: "20%",
+    height: "100%",
     backgroundColor: "grey",
+    resizeMode: "cover",
   },
   nombreEvento: {
     width: "100%",
@@ -68,14 +88,23 @@ const styles = StyleSheet.create({
   perfilImg: {
     width: 80,
     height: 80,
-    position:'absolute',
-    top:'13%',
-    left:20,
-    alignSelf:'flex-start',
+    position: "absolute",
+    top: "13%",
+    left: 20,
+    alignSelf: "flex-start",
     borderRadius: 150 / 2,
-    overflow:'hidden',
-    textAlign:'center',
+    overflow: "hidden",
     borderWidth: 3,
-    backgroundColor:'blue'
+    backgroundColor: "#43aa8b",
+  },
+  lugarFechaContainer: {
+    width: "100%",
+    height: "7%",
+    justifyContent: "center",
+    alignContent: "space-between",
+    paddingLeft: 10,
+  },
+  lugarFecha: {
+    color: "#7f7f7f",
   },
 });

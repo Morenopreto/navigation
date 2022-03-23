@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Pressable, Text } from "react-native";
+import { View, StyleSheet, Pressable, Text,Image } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -7,8 +7,22 @@ function ActividadCard({ navigation, style, children, actividad, onPress }) {
   return (
     <Pressable onPress={() => onPress(actividad)}>
       <View style={{ ...styles.cardContainer, ...style }}>
-        <View style={styles.imagenContainer}>
+        {/* <View style={styles.imagenContainer}>
           <Text>Esto es imagen</Text>
+        </View> */}
+        <View style={styles.imagenContainer}>
+          <Image
+            style={styles.imagen}
+            source={{
+              uri: actividad?.imagenEvento,
+            }}
+          />
+          <Image
+        style={styles.perfilImg}
+        source={{
+          uri: actividad?.creadorEvento.fotoPerfil,
+        }}
+      />
         </View>
         <View style={styles.infoContainer}>
           <View style={styles.clasificacionContainer}>
@@ -50,7 +64,7 @@ const styles = StyleSheet.create({
   cardContainer: {
     width: "90%",
     height: 330,
-    overflow:'hidden',
+    overflow: "hidden",
     marginLeft: "5%",
     marginRight: "5%",
     marginTop: 8,
@@ -68,12 +82,28 @@ const styles = StyleSheet.create({
     //no mostrar lo que sobresale
   },
   imagenContainer: {
-    backgroundColor: "gray",
     width: "100%",
     height: "40%",
     // height:100,
     borderTopEndRadius: 20,
     borderTopStartRadius: 20,
+  }, imagen: {
+    margin: 0,
+    width: "100%",
+    height: "100%",
+    backgroundColor: "grey",
+    resizeMode:'cover'
+  },perfilImg: {
+    width: 65,
+    height: 65,
+    position: "absolute",
+    top: "12%",
+    left: 20,
+    alignSelf: "flex-start",
+    borderRadius: 150 / 2,
+    overflow: "hidden",
+    borderWidth: 3,
+    backgroundColor: "#43aa8b",
   },
   infoContainer: {
     width: "100%",
