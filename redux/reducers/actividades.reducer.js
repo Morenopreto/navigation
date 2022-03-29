@@ -1,6 +1,6 @@
 import { ACTIVIDADES } from "../../data/actividades";
 import Actividades from "../../models/Actividades";
-import { SELECT_ACTIVITY, ADD_ACTIVITY } from "../actions/actividades.action";
+import { SELECT_ACTIVITY, ADD_ACTIVITY,LOAD_ACTIVITY } from "../actions/actividades.action";
 // import Actividades from '../models/Actividades'
 
 const INITIAL_STATE = {
@@ -57,6 +57,15 @@ const ActividadesReducer = (state = INITIAL_STATE, action) => {
         ...state,
         list: state.list.concat(activity),
       };
+      case LOAD_ACTIVITY:
+        console.log('action')
+        console.log(action)
+        console.log('action')
+        
+        return {
+            ...state,
+            list: action.list,
+        }
     default:
       return state;
   }

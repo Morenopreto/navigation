@@ -19,7 +19,7 @@ export default function PantallaUno() {
       <Image
         style={styles.perfilImg}
         source={{
-          uri: selectedActivity?.creadorEvento.fotoPerfil,
+           uri: selectedActivity?.fotoPerfil,
         }}
       />
       {/* IMAGEN DE PERFIL */}
@@ -40,7 +40,7 @@ export default function PantallaUno() {
           {selectedActivity?.observaciones}
         </Text>
       </View>
-      <Text>{selectedActivity.creadorEvento.nombreCreador}</Text>
+      <Text>{selectedActivity.nombreCreador}</Text>
       <Text style={{ fontSize: 25 }}>ID EVENTO: {selectedActivity.id} </Text>
     </View>
   );

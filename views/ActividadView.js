@@ -1,32 +1,36 @@
+import React, { useEffect } from "react";
 import { View, Text, StyleSheet, FlatList, SafeAreaView } from "react-native";
 
-
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 
 import { selectActivity } from "../redux/actions/actividades.action";
 import Button from "../components/Button";
 import style from "../styles/style";
 
+import { loadEventos } from "../redux/actions/actividades.action";
 import ActividadCard from "../components/ActividadCard";
 // import { selectCategory } from '../store/actions/category.action';
 
 export default function ActividadView({ navigation }) {
+  const dispatch = useDispatch();
+  const actividades = useSelector((state) => state.actividades.list);
 
-  const dispatch = useDispatch()
-  const actividades = useSelector(state => state.actividades.list);
-  
+  useEffect(() => {
+    dispatch(loadEventos());
+  }, []);
+
   const handleOnPress = (item) => {
-    
     dispatch(selectActivity(item.id));
 
-    navigation.navigate("Pantalla Uno"); 
+    navigation.navigate("Pantalla Uno");
   };
 
-
-
   const renderItem = ({ item }) => (
-
-    <ActividadCard actividad={item} navigation={navigation} onPress={handleOnPress} />
+    <ActividadCard
+      actividad={item}
+      navigation={navigation}
+      onPress={handleOnPress}
+    />
   );
 
   return (
@@ -50,7 +54,6 @@ export default function ActividadView({ navigation }) {
             onPress={handlePressDos}
           />
         </View> */}
-       
     </View>
     // </SafeAreaView>
   );

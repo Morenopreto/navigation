@@ -4,6 +4,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 
 function ActividadCard({ navigation, style, children, actividad, onPress }) {
+  console.log(actividad)
   return (
     <Pressable onPress={() => onPress(actividad)}>
       <View style={{ ...styles.cardContainer, ...style }}>
@@ -20,7 +21,8 @@ function ActividadCard({ navigation, style, children, actividad, onPress }) {
           <Image
         style={styles.perfilImg}
         source={{
-          uri: actividad?.creadorEvento.fotoPerfil,
+          // uri: actividad?.creadorEvento.fotoPerfil,
+          uri: actividad?.fotoPerfil,
         }}
       />
         </View>
